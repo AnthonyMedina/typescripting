@@ -54,3 +54,15 @@ Typescript was the originator of a lot of newer JS features (let, const, async /
   - This process essentially turns the JS into assembly code and caches (some portion) of that assembly code for reuse on subsequent calls - [HOT MODE].
   - As soon as types are messed with => back into slow mode.
   - TypeScript constraints help us get into hot mode and stay there.
+
+## Implicit Typing
+
+- The TypeScript compiler can make good guesses at types, just through assignment.
+- After assigning value to a variable, you are not allowed to change the type.
+
+```typescript
+let name = 'ant';
+name = 4; // ERROR: Type 'number' is not assignable to type 'string'.
+```
+
+- JS lets us do this but it's a common source of "de-optimisation" in modern runtimes. See [hidden clases](https://draft.li/blog/2016/12/22/javascript-engines-hidden-classes/).
