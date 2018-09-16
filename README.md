@@ -66,3 +66,35 @@ name = 4; // ERROR: Type 'number' is not assignable to type 'string'.
 ```
 
 - JS lets us do this but it's a common source of "de-optimisation" in modern runtimes. See [hidden clases](https://draft.li/blog/2016/12/22/javascript-engines-hidden-classes/).
+
+## Explicit Typing
+
+### Annotations
+
+- Explicit types can be added when variables / function params are defined.
+
+```typescript
+let name: string = 'ant';
+```
+
+- This type information is known as _type annotation_.
+
+### Casting
+
+- Sometimes we want to add a particular type with the `as` keyword.
+
+```typescript
+let input = document.querySelector('input#field_name') as HTMLInputElement;
+
+// Below is an alternate way to do the same thing. Doesn't mix well with JSX.
+let input = <HTMLInputElement>document.querySelector('input#field_name');
+```
+
+### Function params and return
+
+```typescript
+// function login (username: string, password: string): User {
+const login = (username: string, password: string): User => {
+  // do stuff
+};
+```
