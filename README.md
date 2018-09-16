@@ -98,3 +98,67 @@ const login = (username: string, password: string): User => {
   // do stuff
 };
 ```
+
+## Type Systems and Type Equivalence
+
+```typescript
+function validateInputField(input: HTMLInputElement) {
+  // do stuff
+}
+
+validateInputField(x);
+```
+
+1. **Nominal Type Systems** check a type based on whether something is an `instance` of a `class` / `type` named "HTMLInputElement".
+2. **Structural Type Systems** only care about the _shape_ of an object. **THIS IS HOW TYPESCRIPT WORKS**
+
+## Object Shapes
+
+When we talk about the shape of an object, we're referring to the names of properties and the types of their values:
+
+```typescript
+let myBike: { make: string; model: string; year: number };
+
+myBike = {
+  make: 'Specialized',
+  model: 'Hardrock Sport',
+  year: 2008
+};
+```
+
+For example:
+
+```typescript
+function washBike(bike: { make: string; model: string; year: number }) {
+  // do stuff
+}
+
+let bike1 = {
+  make: 'Specialized',
+  model: 'Hardrock Sport',
+  year: 2008
+};
+washBike(bike1); // No error
+```
+
+TS will throw an error when receives a shape missing a property:
+
+```typescript
+let bike2 = {
+  make: 'Specialized',
+  model: 'Hardrock Sport'
+};
+washBike(bike2); // Throws error
+```
+
+...but excess properties are allowed:
+
+```typescript
+let bike3 = {
+  make: 'Specialized',
+  model: 'Hardrock Sport',
+  year: 2008,
+  color: { r: 192, g: 192, b: 192 }
+};
+washBike(bike3); // No error
+```
