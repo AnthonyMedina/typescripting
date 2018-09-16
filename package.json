@@ -1,0 +1,40 @@
+{
+  "name": "typescripting",
+  "version": "1.0.0",
+  "description": "## What is typescript?",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.1.4",
+    "typescript": "^3.0.3"
+  },
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyMedina/typescripting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyMedina/typescripting/issues"
+  },
+  "homepage": "https://github.com/AnthonyMedina/typescripting#readme"
+}
