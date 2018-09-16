@@ -40,3 +40,17 @@ console.log(typeof a === typeof b); // false
 
 - primitive types are immutable
 - direct use of _boxed_ types (i.e. `new String('wrong');) is almost always a mistake.
+
+Typescript was the originator of a lot of newer JS features (let, const, async / await, generator functions, iterators).
+
+## Why add types?
+
+- Avoids potentially "unintuative" type coercion in JS
+- Move some common errors from runtime to compile time.
+- Great self-documentation for other devs
+- Modern JS runtimes are written in typed languages (e.g. C++)
+
+  - Consistently run functions (with same number of args / types etc.) can be passed from the interpreter (Ignition) to an optimising compiler (TurboFan).
+  - This process essentially turns the JS into assembly code and caches (some portion) of that assembly code for reuse on subsequent calls - [HOT MODE].
+  - As soon as types are messed with => back into slow mode.
+  - TypeScript constraints help us get into hot mode and stay there.
