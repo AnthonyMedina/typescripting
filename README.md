@@ -205,3 +205,17 @@ let lisasCar: Car = {
 
 Interfaces don't compile to any JS code.
 DRY type definition makes for easier refactoring.
+Can be exported, just like everything else.
+
+## The `any` type
+
+- Allows for a value of any kind.
+- How every mutable JS value is treated.
+- Useful for migrating code from JS -> TS.
+- Also a `never` type.
+
+```typescript
+let age = 34;
+let myAge = age as any;
+myAge = '35';
+```
