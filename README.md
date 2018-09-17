@@ -151,7 +151,7 @@ let bike2 = {
 washBike(bike2); // Throws error
 ```
 
-...but excess properties are allowed:
+...but excess properties are allowed: ???
 
 ```typescript
 let bike3 = {
@@ -162,3 +162,46 @@ let bike3 = {
 };
 washBike(bike3); // No error
 ```
+
+## Interfaces
+
+Interfaces allow us to define a structure and refer to it by name.
+
+```typescript
+interface Car {
+  make: string;
+  model: string;
+  year: number;
+}
+
+let myCar: Car = { make: 'Honda', model: 'Accord', year: 1992 };
+let lisasCar: Car = { make: 'Ford', model: 'Monster Truck', year: 2016 };
+
+function carCageMatch(car1: Car, car2: Car) {
+  //...
+}
+```
+
+Interfaces are extensible.
+
+```typescript
+interface Car {
+  make: string;
+  model: string;
+  year: number;
+}
+
+interface Car {
+  color: string;
+}
+
+let lisasCar: Car = {
+  make: 'Ford',
+  model: 'Monster Truck',
+  year: 2016,
+  color: '#fff' // ✅
+};
+```
+
+Interfaces don't compile to any JS code.
+DRY type definition makes for easier refactoring.
