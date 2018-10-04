@@ -379,3 +379,15 @@ dependencies.push(dependency); ✅
 dependencies.push(['webpack', 3]); ✅
 dependencies.push(['typescript', '2.5']); ❌
 ```
+
+## Type Aliases
+
+- Sometimes an interface isn't the best way to describe a structure.
+- We can use the `type` keyword to define a type alias.
+
+```typescript
+type Color = [number, number, number];
+let Red: Color = [255, 0, 0];
+```
+
+- We can export `type`s and `interface`s, so we can consume them in other modules!
