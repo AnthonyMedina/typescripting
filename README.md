@@ -219,3 +219,54 @@ let age = 34;
 let myAge = age as any;
 myAge = '35';
 ```
+
+## Classes
+
+- Need to define shape of classes up front, like Interfaces.
+- Constructor is used for creating new intances.
+- Should add type annotations properties **AND** function arguments.
+
+```typescript
+class Car {
+  make: string
+  model: string
+  year: number
+  constructor(make: string,
+              model: string,
+              year: number) {
+    this.make: make;
+    this.model: model;
+    this.year: year;
+  }
+
+  startEngine() {
+    return 'VROOM!';
+  }
+}
+
+const myCar = new Car('Specialized', 'Hardrock Sport', 2008);
+```
+
+
+### Mixins
+
+- Mixins are abstract classes or "templates for classes"
+
+```js
+const AsJSON = (x) => class extends x {
+  asJSON () {
+    return JSON.stringify(this);
+  }
+}
+
+class Person extends AsJSON(Object) {
+  constructor(name) {
+    super();
+    this.name = name;
+  }
+}
+
+const me = new Person('Ant');
+console.log(me.asJSON()) // { "name": "Ant" }
+```
+
