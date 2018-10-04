@@ -269,3 +269,56 @@ class Person extends AsJSON(Object) {
 const me = new Person('Ant');
 console.log(me.asJSON()); // { "name": "Ant" }
 ```
+
+# Enums
+
+- Enums are an ordered set of items / members
+- Each has a name and a value
+- Often we don't care about the value (beyond an equality check)
+- Get members via:
+
+```typescript
+enum AcctType {
+  Checkings,
+  Savings,
+  MoneyMarket
+}
+
+type Acct = [number, AcctType];
+
+let account: Acct = [9142.14, AccType.Checking];
+```
+
+### Enums in TS and JS
+
+```typescript
+enum Suit {
+  Club,
+  Diamond,
+  Heart,
+  Spade
+}
+```
+
+...compiles to:
+
+```js
+var Suit;
+(function(Suit) {
+  Suit[(Suit['Club'] = 0)] = 'Club';
+  Suit[(Suit['Diamond'] = 1)] = 'Diamond';
+  Suit[(Suit['Heart'] = 2)] = 'Heart';
+  Suit[(Suit['Spade'] = 3)] = 'Spade';
+})(Suit || (Suit = {}));
+
+console.log(Suit); /* { '0': 'Club',
+                        '1': 'Diamond',
+                        '2': 'Heart',
+                        '3': 'Spade',
+                        Club: 0,
+                        Diamond: 1,
+                        Heart: 2,
+                        Spade: 3 } */
+```
+
+So to get the number of memebers of an enum: `Object.keys(Suit).length / 2`.
