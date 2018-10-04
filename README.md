@@ -322,3 +322,42 @@ console.log(Suit); /* { '0': 'Club',
 ```
 
 So to get the number of memebers of an enum: `Object.keys(Suit).length / 2`.
+
+# Arrays
+
+- By default, arrays in TS act the same as they do in JS.
+
+```typescript
+let a = [];
+a.push(5);
+a.push('some string');
+```
+
+- Adding a type constraint helps us to keep contents consistent.
+
+```typescript
+let nums = number[]= [1, 2, 3];
+```
+
+- When initializing class properties with empty arrays, provide a type (otherwise it will default to `never`)
+
+```typescript
+class ShoppingCart {
+  items = [];
+  constructor() {
+    this.items.push(5);
+  }
+}
+// ERROR: Argument of type '5' is
+// not assignable to parameter of
+// type 'never'
+```
+
+```typescript
+class ShoppingCart {
+  items: number[] = [];
+  constructor() {
+    this.items.push(5);
+  }
+}
+```
