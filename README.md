@@ -361,3 +361,21 @@ class ShoppingCart {
   }
 }
 ```
+
+## Tuples
+
+- Tuples are arrays of fixed length.
+- Typically represent values that are related in some way.
+- Consumers need to know about order.
+- Shines with destructured assignment.
+- Will check order recursively in some cases.
+
+```typescript
+let dependency: [string, number];
+dependency = ['react', 16];
+
+let dependencies: [string, number][] = [];
+dependencies.push(dependency); ✅
+dependencies.push(['webpack', 3]); ✅
+dependencies.push(['typescript', '2.5']); ❌
+```
