@@ -247,17 +247,17 @@ class Car {
 const myCar = new Car('Specialized', 'Hardrock Sport', 2008);
 ```
 
-
 ### Mixins
 
-- Mixins are abstract classes or "templates for classes"
+- Mixins are abstract classes or "templates for classes".
 
 ```js
-const AsJSON = (x) => class extends x {
-  asJSON () {
-    return JSON.stringify(this);
-  }
-}
+const AsJSON = x =>
+  class extends x {
+    asJSON() {
+      return JSON.stringify(this);
+    }
+  };
 
 class Person extends AsJSON(Object) {
   constructor(name) {
@@ -267,6 +267,5 @@ class Person extends AsJSON(Object) {
 }
 
 const me = new Person('Ant');
-console.log(me.asJSON()) // { "name": "Ant" }
+console.log(me.asJSON()); // { "name": "Ant" }
 ```
-
