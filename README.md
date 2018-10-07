@@ -391,3 +391,70 @@ let Red: Color = [255, 0, 0];
 ```
 
 - We can export `type`s and `interface`s, so we can consume them in other modules!
+
+## Functions
+
+- Functions have types, just like any other value.
+
+```typescript
+let login: (username: string, password: string) => User; // a function type
+login = (username, password) => new User(); // a function value
+```
+
+- Interfaces aren't just for describing object structures
+- Here's one describing a function type:
+
+```typescript
+interface ClickListener {
+  (this: Window, e: MouseEvent): void;
+}
+
+const myLisener: ClickListener = e => {
+  console.log('mouse clicked!', e);
+};
+
+addEventListener('click', myListener); ✅
+
+myListener(new MouseEvent('click')); ❌
+// The `this` context of type `void` is not
+// assignable to method's `this` of type `Window`.
+```
+
+- Note the `this`property in the interface. It ensures that the function is bound to the appropriate context.
+
+### Functions: Required Parameters / Optional Parameters
+
+- Unless you say otherwise, TS assumes every argument is required.
+
+```typescript
+function createTwitterPost(body: string, username: string, imageUrl: URL) {
+  // ...
+}
+
+createTwitterPost('Hello World!', '4ntm3d'); ❌
+// expected 3 arguments and got 2...
+```
+
+- We can fix this with an optional parameter (by using a `?`)
+- Can also add a default argument (with `=`)
+
+```typescript
+function createTwitterPost(body: string, username: string = '4antm3d', imageUrl?: URL) {
+  // ...
+}
+
+createTwitterPost('Hello World!', '4ntm3d'); ✅
+```
+
+### Functions: Rest Params
+
+- A (boundless) group of optional parameters
+
+```typescript
+function orderSandwich(bread: string, name: string, ...toppings: string[]) {
+  // ...
+}
+
+orderSandwich('Malted Bloomer', 'Salad'); ✅
+orderSandwich('Wheat', 'Veggie', 'Mustard', 'Pickles'); ✅
+```
