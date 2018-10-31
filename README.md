@@ -458,3 +458,61 @@ function orderSandwich(bread: string, name: string, ...toppings: string[]) {
 orderSandwich('Malted Bloomer', 'Salad'); ✅
 orderSandwich('Wheat', 'Veggie', 'Mustard', 'Pickles'); ✅
 ```
+
+## Generics
+
+- Generics allow us to reuse code across many types, interfaces and functions.
+- We still get compile-time safety.
+
+Here, `T` is a type parameter, which is determined by the argument type passed to the function.
+
+```ts
+function gimmeFive<T>(x:T): T[] {
+  return [x, x, x, x, x];
+}
+
+let threes:number[]= gimmeFive(3);
+let eggs = string[] = gimmeFive('egg');
+```
+
+- Arrays can be expressed in this way to0:
+
+```ts
+let cards = Array<[Suit, CardNumber]>(52);
+```
+
+- So can Promises:
+
+```js
+let data: Promise<Response> = fetch('http://example.com');
+```
+
+- And, React components:
+
+```ts
+interface MyProps {
+  title: string;
+}
+interface MyState {
+  isClicked: boolean;
+}
+class MyComponent extends Component<MyProps, MyState> {
+  // ...
+}
+```
+
+- We can specify constraints on generic types:
+
+```ts
+function midpoint<T extends Point2D>([p1: T, p2: T]):T {
+  // ...
+}
+```
+
+- Generics can be used with interfaces as well:
+
+```ts
+interface IFileReader<T extends File> {
+  readFile(file: T): Blob;
+}
+```
