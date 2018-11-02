@@ -538,3 +538,20 @@ class SharedAccount extends Account {
   }
 }
 ```
+
+## Function Overloading
+
+TS allows us to have more than one function "head", although we are still limited to a single implementation.
+
+```ts
+function add(x: number, y: number): number;
+function add(x: string, y: string, radix: number): number;
+
+function add(
+  x: number | string,
+  y: number | string,
+  radix: number = 10
+): number {
+  return parseInt(`${x}`, radix), parseInt(`${y}`, radix);
+}
+```
