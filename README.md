@@ -516,3 +516,25 @@ interface IFileReader<T extends File> {
   readFile(file: T): Blob;
 }
 ```
+
+## Access Modifier Keywords
+
+- _public_ - anyone can access (default)
+- _protected_ - self and subclasses
+- _private_ - self can access
+- _static_
+- _readonly_
+
+```ts
+class Account {
+  protected email: string;
+  private password: string;
+  public accountId: number;
+}
+
+class SharedAccount extends Account {
+  setEmail(newEmail: string) {
+    this.email = newEmail;
+  }
+}
+```
