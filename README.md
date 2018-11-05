@@ -555,3 +555,40 @@ function add(
   return parseInt(`${x}`, radix), parseInt(`${y}`, radix);
 }
 ```
+
+## Iterables
+
+- Support iteration with a `for ... of` loop.
+- Requires implementation of the `Symbol.iterator` method.
+- `Array` and `Map` already support this.
+
+```ts
+const array = ['a', 'b', 'c'];
+let it = arr[Symbol.iterator](); // it = f() { ... }
+console.log(it.next()); // { value: 'a', done: false }
+console.log(it.next()); // { value: 'b', done: false }
+console.log(it.next()); // { value: 'c', done: false }
+console.log(it.next()); // { value: undefined, done: true }
+```
+
+### Defining our own iterable
+
+```ts
+let ant = {
+  name: 'Ant',
+  [Symbol.iterator]() {
+    let i = 0;
+    let str = this._name;
+    return next () {
+      if (i < str.length) {
+        return { value: str[i++], done: false }
+      }
+      return { done: false }
+    }
+  }
+}
+
+for (let l of ant) {
+  console.log(l);
+}
+```
