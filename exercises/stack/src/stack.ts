@@ -24,7 +24,7 @@ export default class Stack<T> implements IStack<T> {
         data: itemOrArray,
         next: this.head
       };
-      this.head = node;
+      this.head = node as IStackNode<T>;
     }
     return this;
   }
@@ -32,7 +32,7 @@ export default class Stack<T> implements IStack<T> {
   pop(): T | undefined {
     const node = this.head;
     if (!node) return undefined;
-    this.head = this.head.next;
+    this.head = node.next;
     return node.data;
   }
 
@@ -49,7 +49,6 @@ export default class Stack<T> implements IStack<T> {
   print(): void {
     let node = this.head;
     while (node) {
-      console.log(node);
       node = node.next;
     }
   }
