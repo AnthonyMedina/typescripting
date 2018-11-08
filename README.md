@@ -592,3 +592,29 @@ for (let l of ant) {
   console.log(l);
 }
 ```
+
+## Generators
+
+- Can be thought of as functions that return more than once.
+- Define their own iterative algorithm, `yield`ing each item in the sequence.
+- Use the `function*` syntax.
+- Returns an iterator.
+- State of the closure is preserved between `.next()` calls.
+- **LOCAL EXCUTION IS PAUSED**
+
+```js
+function* fib() {
+  let lastLast = 1;
+  let last = 0;
+  while (true) {
+    let val = last + lastLast;
+    yield val;
+    lastLast = last;
+    last = val;
+  }
+}
+
+for (let x of fib()) {
+  console.log(x);
+}
+```
