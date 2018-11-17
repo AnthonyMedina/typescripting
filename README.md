@@ -643,3 +643,25 @@ console.log(it.next(100).value);
 ```
 
 "anything we put into `next` comes out of the left side of yield"
+
+## React + Typescript
+
+### Stateless Functional Components
+
+- Interfaces used to describe props
+
+```tsx
+import * as React from 'react';
+
+interface IMyComponentProps {
+  name: string;
+}
+const MyComponent: React.SFC<IMyComponentProps> = props => {
+  // SFC stands for "Stateless Functional Component"
+  return <h1>{props.name}</h1>;
+};
+
+const App: React.SFC = () => {
+  return <MyComponent name="Ant" />;
+};
+```
