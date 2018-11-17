@@ -618,3 +618,28 @@ for (let x of fib()) {
   console.log(x);
 }
 ```
+
+## Iterators
+
+- The ability to pass values **IN** while iterating is important, and serves as the foundation for many great Javascript patterns
+
+```js
+function* sequence() {
+  let lastResult = 0;
+  while (true) {
+    lastResult = yield lastResult + 5;
+    console.log(`lastResult = ${lastResult}`);
+  }
+}
+
+let it = sequence();
+console.log(it.next().value); // logs 5
+console.log(it.next(35).value);
+// logs lastResult=35
+// 40
+console.log(it.next(100).value);
+// lastResult=100
+// 105
+```
+
+"anything we put into `next` comes out of the left side of yield"
