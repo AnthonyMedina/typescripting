@@ -6,14 +6,15 @@ import {
   fetchPlaceSummaries,
   fetchPlaceDetails
 } from '../utils/places';
+import './App.scss';
 
 interface IAppState {
   results: PlaceDetails[];
 }
 
 export default class App extends React.Component<{}, IAppState> {
-  constructor() {
-    super({});
+  constructor(props: any) {
+    super(props);
     this.state = {
       results: []
     };
@@ -27,9 +28,8 @@ export default class App extends React.Component<{}, IAppState> {
     this.setState({ results });
   }
   render() {
-    const placeResults = this.state.results.map(pr => {
-      return <p key={pr.id}>{pr.name}</p>;
-      // return <PlaceSearchResult {...pr}/>;
+    const placeResults = this.state.results.map(placeDetails => {
+      return <PlaceSearchResult key={placeDetails.id} {...placeDetails} />;
     });
     return <ul className="results">{placeResults}</ul>;
   }
