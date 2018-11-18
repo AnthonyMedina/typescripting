@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { string } from 'prop-types';
 
 interface IAppProps {
   name: string;
