@@ -1,14 +1,6 @@
 import { getFibSequence } from '../src/fib';
 
 describe('fib.js#getFibSequence basic cases', () => {
-  test('getFibSequence() returns an iterator', () => {
-    expect(typeof getFibSequence()).toBe('object');
-    expect(Object.keys(getFibSequence())).toMatchObject([
-      'next',
-      'throw',
-      'return'
-    ]);
-  });
   test('getFibSequence() first number -> 1', () => {
     let it = getFibSequence();
     expect(it.next().value).toBe(1);

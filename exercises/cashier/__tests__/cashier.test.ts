@@ -1,17 +1,12 @@
-import * as module from '../src/cashier';
-
-let { cashier } = module;
+import { cashier } from '../src/cashier';
 
 if (cashier) {
   describe('cashier.ts exports are correct', () => {
     test('cashier function export is found', () => {
-      expect(typeof module.cashier).toBe('function');
+      expect(typeof cashier).toBe('function');
     });
     test('cashier returns an object', () => {
       expect(typeof cashier()).toBe('object');
-    });
-    test('only one thing exported from the module', () => {
-      expect(Object.keys(module).length).toBe(1);
     });
   });
 
@@ -29,7 +24,7 @@ if (cashier) {
   });
 
   describe('adding each item via cart.addItem(CartItem), increases length as appropriate', () => {
-    let c = module.cashier() as any;
+    let c = cashier() as any;
     test('cart.length is initially zero', () => {
       expect(c.length).toBe(0);
     });
@@ -44,7 +39,7 @@ if (cashier) {
   });
 
   describe('adding items via add(name, price, qty) works', () => {
-    let c = module.cashier() as any;
+    let c = cashier() as any;
     test('cart.length is initially zero', () => {
       expect(c.length).toBe(0);
     });
@@ -59,7 +54,7 @@ if (cashier) {
   });
 
   describe('If not specified, quantity is assumed to be 1', () => {
-    let c = module.cashier() as any;
+    let c = cashier() as any;
     test('cart.length is initially zero', () => {
       expect(c.length).toBe(0);
     });
@@ -74,7 +69,7 @@ if (cashier) {
   });
 
   describe('adding each item, increases total as appropriate', () => {
-    let c = module.cashier() as any;
+    let c = cashier() as any;
     test('total is initially zero', () => {
       expect(c.total).toBe(0);
     });
