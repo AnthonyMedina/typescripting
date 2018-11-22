@@ -665,3 +665,34 @@ const App: React.SFC = () => {
   return <MyComponent name="Ant" />;
 };
 ```
+
+### Stateful Components
+
+- Interfaces used to describe `prop` AND `state`
+
+```tsx
+import React, { Component } from 'react';
+
+interface IMyComponentProps {
+  name: string;
+}
+interface IMyComponentState {
+  time: Date;
+}
+
+class MyComponent extends Component<IMyComponentProps, IMyComponentState> {
+  render() {
+    return (
+      <div>
+        {this.props.name} - {this.state.time.toISOString()}
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.setState({
+      time: new Date()
+    });
+  }
+}
+```
